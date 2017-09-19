@@ -8,13 +8,15 @@ public class VerifyHelper
 {
 
     static public Boolean linksContainsText(List<String> linksText, String textForCheck) {
-        for (String text : linksText)
-        {
-            if (!text.contains(textForCheck.toLowerCase()))
-            {
-                return false;
-            }
-        }
-        return true;
+        return linksText.stream().allMatch(text -> text.contains(textForCheck.toLowerCase()));
+
+//        for (String text : linksText)
+//        {
+//            if (!text.contains(textForCheck.toLowerCase()))
+//            {
+//                return false;
+//            }
+//        }
+//        return true;
     }
 }

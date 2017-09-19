@@ -4,6 +4,8 @@ import static util.VerifyHelper.linksContainsText;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import driver.DriverSingleton;
@@ -16,7 +18,7 @@ public class TestingWebDriver
     private ResultPage resultPage;
     private String textForCheck = "beatles";
 
-    @BeforeMethod
+    @BeforeTest
     public void initialize()
     {
         googleByMainPage = new GoogleByMainPage(DriverSingleton.getDriver());
