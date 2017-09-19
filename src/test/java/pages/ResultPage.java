@@ -1,7 +1,7 @@
 package pages;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,13 +17,19 @@ public class ResultPage extends AbstractPage
 
     public List<String> getAllLinksTxt()
     {
-        List<String> textOfAllLinks = new ArrayList<String>();
 
         List<WebElement> allLinks = driver.findElements(By.xpath("//div[@id='ires']//h3/a"));
-        for (WebElement element : allLinks)
-        {
+
+        /*
+            for (WebElement element : allLinks) {
             textOfAllLinks.add(element.getText().toLowerCase());
         }
-        return textOfAllLinks;
+        */
+
+        return allLinks.stream().map(
+                s -> {
+                    return s.getText().toLowerCase();
+                }
+        ).collect(Collectors.toList());
     }
 }
